@@ -1,0 +1,46 @@
+{
+  "name": "video-wallpaper-windows",
+  "version": "1.0.0",
+  "description": "Loop a video behind the Windows desktop icons",
+  "main": "src/main.js",
+  "author": "Video Wallpaper",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^40.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.videowallpaper.windows",
+    "productName": "Video Wallpaper",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "src/desktop-wallpaper.ps1",
+        "to": "desktop-wallpaper.ps1"
+      }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "artifactName": "Video-Wallpaper-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Video Wallpaper"
+    }
+  }
+}

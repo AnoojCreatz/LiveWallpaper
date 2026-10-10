@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Wallpaper</title>
+  <style>
+    :root { color-scheme: dark; font-family: "Segoe UI", Arial, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #10141d; color: #f4f6fb; }
+    main { padding: 28px; }
+    .eyebrow { color: #8aa4ff; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+    h1 { margin: 8px 0 6px; font-size: 27px; }
+    .sub { margin: 0; color: #aab3c5; font-size: 14px; line-height: 1.5; }
+    .panel { margin-top: 22px; padding: 18px; border: 1px solid #2b3446; border-radius: 14px; background: #171e2a; }
+    .label { margin-bottom: 8px; color: #aab3c5; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .6px; }
+    #fileName { overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; }
+    .status { display: flex; align-items: center; gap: 9px; margin-top: 16px; color: #b9c4d7; font-size: 13px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #727d91; }
+    .dot.on { background: #56d69a; box-shadow: 0 0 10px #56d69a66; }
+    .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+    button { min-height: 42px; padding: 10px 12px; border: 1px solid #39445a; border-radius: 9px; color: #f4f6fb; background: #252e40; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+    button:hover { background: #303c52; }
+    button.primary { grid-column: 1 / -1; border-color: #718bff; background: #5d75e8; }
+    button.primary:hover { background: #7188f5; }
+    button.danger { border-color: #75434a; background: #38252c; }
+    button:disabled { opacity: .45; cursor: not-allowed; }
+    .note { margin-top: 17px; color: #8995aa; font-size: 12px; line-height: 1.5; }
+    #message { min-height: 18px; margin-top: 10px; color: #ffc779; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Windows desktop utility</div>
+    <h1>Video Wallpaper</h1>
+    <p class="sub">Bring your desktop to life with a looping video, behind your desktop icons.</p>
+
+    <section class="panel">
+      <div class="label">Selected video</div>
+      <div id="fileName">No video selected yet.</div>
+      <div class="status"><span id="dot" class="dot"></span><span id="statusText">Wallpaper is stopped</span></div>
+      <div class="buttons">
+        <button id="choose" class="primary">Choose video…</button>
+        <button id="playPause">Pause / Resume</button>
+        <button id="mute">Unmute audio</button>
+        <button id="stop" class="danger">Stop wallpaper</button>
+        <button id="apply">Apply saved video</button>
+      </div>
+      <div id="message" role="status" aria-live="polite"></div>
+    </section>
+    <p class="note">Tip: H.264 MP4 videos usually offer the best compatibility. Video playback can use additional battery and CPU/GPU resources. This app currently targets the primary display.</p>
+  </main>
+  <script src="renderer.js"></script>
+</body>
+</html>
